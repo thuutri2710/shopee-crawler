@@ -9,10 +9,7 @@ const main = async () => {
   const shopLength = shopList.length;
   // Iterate shop list
   for (const shop of shopList) {
-    console.info(
-      "*Start shop: " + shopIndex + "/" + shopLength + ": ",
-      shop.name
-    );
+    console.info("*Start shop: " + shopIndex + "/" + shopLength + ": ", shop.name);
     shopIndex++;
     const shopId = shop.shopid;
     const products = await crawlShopProducts(shopId);
@@ -24,38 +21,37 @@ const main = async () => {
       // Get product details and reviews
       const productId = product.itemid;
 
-      console.log(
-        "**** " + index + "/" + totalLength + ". Start product: ",
-        productId
-      );
+      console.log("**** " + index + "/" + totalLength + ". Start product: ", productId);
 
       // Crawl product details
       const productDetails = await crawlProductDetails(shopId, productId);
-      const productData = {
-        itemid: productDetails.itemid,
-        shopid: productDetails.shopid,
-        name: productDetails.name,
-        view_count: productDetails.view_count,
-        like_count: productDetails.like_count,
-        item_status: productDetails.item_status,
-        categories: productDetails.categories,
-        tier_variations: productDetails.tier_variations,
+      const productData = productDetails
+        ? {
+            itemid: productDetails.itemid,
+            shopid: productDetails.shopid,
+            name: productDetails.name,
+            view_count: productDetails.view_count,
+            like_count: productDetails.like_count,
+            item_status: productDetails.item_status,
+            categories: productDetails.categories,
+            tier_variations: productDetails.tier_variations,
 
-        historical_sold: productDetails.historical_sold,
-        images: productDetails.images,
-        discount: productDetails.discount,
-        catid: productDetails.catid,
-        is_official_shop: productDetails.is_official_shop,
-        sold: productDetails.sold,
-        attributes: productDetails.attributes,
-        stock: productDetails.stock,
-        is_adult: productDetails.is_adult,
-        currency: productDetails.currency,
-        price_min: productDetails.price_min,
-        description: productDetails.description,
-        shop_location: productDetails.shop_location,
-        price_before_discount: productDetails.price_before_discount,
-      };
+            historical_sold: productDetails.historical_sold,
+            images: productDetails.images,
+            discount: productDetails.discount,
+            catid: productDetails.catid,
+            is_official_shop: productDetails.is_official_shop,
+            sold: productDetails.sold,
+            attributes: productDetails.attributes,
+            stock: productDetails.stock,
+            is_adult: productDetails.is_adult,
+            currency: productDetails.currency,
+            price_min: productDetails.price_min,
+            description: productDetails.description,
+            shop_location: productDetails.shop_location,
+            price_before_discount: productDetails.price_before_discount,
+          }
+        : null;
       const reviews = await crawlShopReviews(shopId, productId);
       if (reviews.length > 10) {
         const reviews_optimized = reviews.map((review) => {

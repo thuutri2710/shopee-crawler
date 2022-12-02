@@ -2,34 +2,7 @@ const fs = require("fs");
 
 const crawlShopDetails = require("./crawler/shop_details");
 
-const shops_username = [
-  "minastore_vn",
-  "friday.official",
-  "germe.vn",
-  "sliky",
-  "yinxx.vn",
-  "kamongclothing",
-  "choobe.official",
-  "hinstore",
-  "sysea.vn",
-  "trumthoitrangqc",
-  "khanhnganshop",
-  "dorita_boutique",
-  "tiemvay123",
-  "hethongcheapshop",
-  "gihathoitrangthietke",
-  "duongthuydungchuyensile",
-  "kusashop",
-  "zinti88",
-  "huyentrang_fashion",
-  "gufunisex",
-  "sammivnxk",
-  "zinniaboutique.2018",
-  "sysea.vn",
-  "29feb.closet",
-  "mood_boutique",
-  "forgirl_vn",
-];
+const shops_username = ["tphuong.1507"];
 
 const shopDetailRunner = async () => {
   const shops = [];

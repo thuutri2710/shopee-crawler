@@ -79,7 +79,7 @@ Make sure that you had installed [Node.js](https://nodejs.org/en/download/)
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/hoangkimminh/shopee-crawler
+   git@github.com:thuutri2710/shopee-crawler.git
    ```
 2. Install NPM packages
    ```sh
